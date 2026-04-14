@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Expired - {{ company_name }}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">{{ company_name }}</div>
+    </header>
+    <div class="status-page">
+      <div class="status-icon expired">!</div>
+      <h2>Signing Link Expired</h2>
+      <p>This signing link for <strong>{{ signing_request.document_name }}</strong> has expired.</p>
+      <p>Please contact {{ signing_request.sender_name }} to request a new signing link.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,379 @@
+/* === Base === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f6f8;
+  color: #1a1a2e;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* === Header === */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #e2e4ea;
+  margin-bottom: 32px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #1a1a2e;
+}
+
+.header-badge {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4a7c59;
+  background: #e8f5e9;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* === Document Info === */
+.doc-info {
+  background: #fff;
+  border: 1px solid #e2e4ea;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.doc-info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.doc-info-row:not(:last-child) {
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.doc-info-row .label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.doc-info-row .value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+/* === Document Preview === */
+.doc-preview {
+  margin-bottom: 32px;
+}
+
+.doc-preview h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #e2e4ea;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* === Signature Section === */
+.signature-section {
+  background: #fff;
+  border: 1px solid #e2e4ea;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.signature-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #374151;
+}
+
+/* Tabs */
+.sig-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border: 1px solid #e2e4ea;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sig-tab {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  background: #f9fafb;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sig-tab:not(:last-child) {
+  border-right: 1px solid #e2e4ea;
+}
+
+.sig-tab.active {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+/* Tab content */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Type signature */
+.sig-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.sig-input:focus {
+  border-color: #1a1a2e;
+}
+
+.sig-preview-box {
+  background: #fefefe;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typed-signature {
+  font-family: 'Dancing Script', cursive;
+  font-size: 36px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+/* Draw signature */
+.canvas-wrapper {
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 4px;
+  background: #fefefe;
+  margin-bottom: 8px;
+}
+
+#sig-canvas {
+  width: 100%;
+  height: 160px;
+  cursor: crosshair;
+  touch-action: none;
+  display: block;
+}
+
+.btn-clear {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-clear:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* === Legal === */
+.legal-section {
+  margin-bottom: 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: #4b5563;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  accent-color: #1a1a2e;
+  flex-shrink: 0;
+}
+
+/* === Submit Button === */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background: #1a1a2e;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #2d2d4e;
+}
+
+.btn-submit:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  color: #9ca3af;
+}
+
+/* === Status Message === */
+.status-message {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.status-message.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.status-message.info {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+/* === Success Overlay === */
+.success-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(26, 26, 46, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.success-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 48px;
+  text-align: center;
+  max-width: 420px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #4a7c59;
+  color: #fff;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.success-content h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #1a1a2e;
+}
+
+.success-content p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+/* === Status Pages (expired, already signed) === */
+.status-page {
+  text-align: center;
+  padding: 64px 24px;
+}
+
+.status-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-weight: 700;
+}
+
+.status-icon.signed {
+  background: #e8f5e9;
+  color: #4a7c59;
+}
+
+.status-icon.expired {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-page h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.status-page p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .container { padding: 16px; }
+  .pdf-viewer { height: 350px; }
+  .typed-signature { font-size: 28px; }
+  .success-content { padding: 32px 24px; margin: 0 16px; }
+}

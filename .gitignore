@@ -1,0 +1,41 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment — may contain tunnel URLs
+.env
+
+# Storage — contains actual documents, signatures, and signed PDFs
+storage/unsigned/*
+storage/signed/*
+storage/signatures/*
+!storage/unsigned/.gitkeep
+!storage/signed/.gitkeep
+!storage/signatures/.gitkeep
+
+# Database
+db/*.db
+db/*.db-wal
+db/*.db-shm
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Launch config (local paths)
+.claude/
+main.py
+README.md

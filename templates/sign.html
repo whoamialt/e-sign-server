@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Document - {{ company_name }}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">{{ company_name }}</div>
+      <div class="header-badge">Secure Document Signing</div>
+    </header>
+
+    <!-- Document Info -->
+    <div class="doc-info">
+      <div class="doc-info-row">
+        <span class="label">Document</span>
+        <span class="value">{{ signing_request.document_name }}</span>
+      </div>
+      <div class="doc-info-row">
+        <span class="label">Sent by</span>
+        <span class="value">{{ signing_request.sender_name }}</span>
+      </div>
+      <div class="doc-info-row">
+        <span class="label">Signing as</span>
+        <span class="value">{{ signing_request.signer_name }}</span>
+      </div>
+    </div>
+
+    <!-- Document Preview -->
+    <div class="doc-preview">
+      <h3>Review Document</h3>
+      <iframe src="/document/{{ signing_request.token }}" class="pdf-viewer"></iframe>
+    </div>
+
+    <!-- Signature Section -->
+    <div class="signature-section">
+      <h3>Your Signature</h3>
+
+      <!-- Tabs -->
+      <div class="sig-tabs">
+        <button class="sig-tab active" data-tab="type" onclick="switchTab('type')">
+          Type Signature
+        </button>
+        <button class="sig-tab" data-tab="draw" onclick="switchTab('draw')">
+          Draw Signature
+        </button>
+      </div>
+
+      <!-- Type Tab -->
+      <div id="tab-type" class="tab-content active">
+        <input
+          type="text"
+          id="typed-name"
+          class="sig-input"
+          placeholder="Type your full name"
+          value="{{ signing_request.signer_name }}"
+          oninput="updateTypedPreview()"
+        >
+        <div class="sig-preview-box">
+          <div id="typed-preview" class="typed-signature">{{ signing_request.signer_name }}</div>
+        </div>
+      </div>
+
+      <!-- Draw Tab -->
+      <div id="tab-draw" class="tab-content">
+        <div class="canvas-wrapper">
+          <canvas id="sig-canvas" width="560" height="160"></canvas>
+        </div>
+        <button class="btn-clear" onclick="clearCanvas()">Clear</button>
+      </div>
+    </div>
+
+    <!-- Legal Acknowledgment -->
+    <div class="legal-section">
+      <label class="checkbox-label">
+        <input type="checkbox" id="agree-checkbox">
+        <span>I, <strong>{{ signing_request.signer_name }}</strong>, confirm that I have reviewed the document above and agree to be bound by its terms. I understand that this electronic signature carries the same legal weight as a handwritten signature.</span>
+      </label>
+    </div>
+
+    <!-- Submit -->
+    <button id="submit-btn" class="btn-submit" onclick="submitSignature()" disabled>
+      Sign Document
+    </button>
+
+    <!-- Status Messages -->
+    <div id="status-message" class="status-message" style="display:none;"></div>
+  </div>
+
+  <!-- Success Overlay -->
+  <div id="success-overlay" class="success-overlay" style="display:none;">
+    <div class="success-content">
+      <div class="success-icon">&#10003;</div>
+      <h2>Document Signed</h2>
+      <p>Thank you, <strong>{{ signing_request.signer_name }}</strong>.</p>
+      <p>Your signature has been recorded. {{ signing_request.sender_name }} will be notified.</p>
+    </div>
+  </div>
+
+  <!-- Hidden canvas for typed signature rendering -->
+  <canvas id="typed-render-canvas" width="560" height="160" style="display:none;"></canvas>
+
+  <script>
+    const TOKEN = "{{ signing_request.token }}";
+    const SIGNER_NAME = "{{ signing_request.signer_name }}";
+  </script>
+  <script src="/static/js/sign.js"></script>
+</body>
+</html>

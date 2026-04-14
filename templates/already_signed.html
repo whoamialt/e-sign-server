@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Already Signed - {{ company_name }}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">{{ company_name }}</div>
+    </header>
+    <div class="status-page">
+      <div class="status-icon signed">&#10003;</div>
+      <h2>Document Already Signed</h2>
+      <p>This document was signed by <strong>{{ signing_request.signer_name }}</strong> on {{ signing_request.signed_at }}.</p>
+      <p>No further action is required.</p>
+    </div>
+  </div>
+</body>
+</html>
