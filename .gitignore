@@ -38,4 +38,3 @@ db/*.db-shm
 # Launch config (local paths)
 .claude/
 main.py
-README.md
