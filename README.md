@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="E-Sign Server" width="600" />
+  <img src="assets/banner.png" alt="E-Sign Server" width="600" />
 </p>
 
 <h1 align="center">E-Sign Server</h1>
